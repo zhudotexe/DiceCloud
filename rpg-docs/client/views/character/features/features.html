@@ -95,14 +95,16 @@
 								<core-tooltip label="Feature enabled"
 											  position="left">
 									<paper-checkbox class="enabledCheckbox" 
-													checked={{enabled}}>
+													checked={{enabled}}
+													disabled={{#unless canEditCharacter charId}}true{{/unless}}>
 									</paper-checkbox>
 								</core-tooltip>
 							{{/if}}
 						</div>
 						{{#if description}}
-							<div flex class="bottom text"
-								 >{{evaluateString charId description}}</div>
+							<div flex class="bottom">
+								{{#markdown}}{{evaluateString charId shortDescription}}{{/markdown}}
+							</div>
 						{{/if}}
 						{{#if hasUses}}
 							<div layout horizontal center end-justified>

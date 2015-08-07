@@ -1,6 +1,7 @@
 Router.configure({
 	loadingTemplate: "loading",
 	layoutTemplate: "layout",
+	trackPageView: true,
 });
 
 Router.plugin("ensureSignedIn", {
@@ -27,7 +28,7 @@ Router.map(function() {
 		},
 		data: {
 			characters: function(){
-				return Characters.find({}, {fields: {_id: 1}});
+				return Characters.find({}, {fields: {_id: 1}, sort: {name: 1}});
 			}
 		},
 		onAfterAction: function() {
@@ -55,6 +56,12 @@ Router.map(function() {
 			if (name){
 				document.title = name;
 			}
+		},
+		//analytics
+		trackPageView: false,
+		onRun: function() {
+			window.ga && window.ga("send", "pageview", "/character");
+			this.next();
 		},
 	});
 

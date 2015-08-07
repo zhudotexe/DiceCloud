@@ -193,3 +193,53 @@ ChangeLogs.insert({
 		"Experience dialogs should update their edit-mode inputs properly now",
 	],
 });
+
+ChangeLogs.insert({
+	version: "0.6.2",
+	changes: [
+		"Fixed a regression which broke min and max effects",
+	],
+});
+
+ChangeLogs.insert({
+	version: "0.6.3",
+	changes: [
+		"Fixed a regression that stopped skills and attributes from rounding down correctly",
+		"Made dependency loops return NaN immediately, rather than looping indefinitely until a page refresh. Adding an effect that adds \"strength\" to Strength, won't cause Strength to constantly increase or freeze the browser, Strength just becomes NaN",
+	],
+});
+
+ChangeLogs.insert({
+	version: "0.6.4",
+	changes: [
+		"Hit dice now has a \"+\" between the dice and the constitution modifier",
+		"Items with multiple attacks should have the damage type editable on all attacks now",
+		"Spell attacks should now correctly inherit changes to their spell's name",
+		"Character lists should now be ordered alphabetically",
+		"Skills should have correct min and max effects applied again",
+	],
+});
+
+ChangeLogs.insert({
+	version: "0.6.5",
+	changes: [
+		"Net worth now takes container values into account",
+		"Added support for character pictures",
+		"Disabled edit buttons for read-only viewers",
+	],
+});
+
+ChangeLogs.insert({
+	version: "0.6.6",
+	changes: [
+		"Text fields now accept github-flavor markdown formatting",
+	],
+});
+
+ChangeLogs.insert({
+	version: "0.6.7",
+	changes: [
+		"Fixed effect values not being visible on small screens",
+		"Added basic analytics",
+	],
+});
