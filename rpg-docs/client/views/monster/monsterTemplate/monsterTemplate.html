@@ -1,0 +1,70 @@
+<template name="monsterTemplate">
+	<h1>{{name}}</h1>
+	<h2>{{size}} {{type}}, {{alignment}}</h2>
+	
+	<hr>
+	
+	<div>
+		<b>Armor Class:</b> {{armor.value}}
+	</div>
+	<div>
+		<b>Hit Points</b> {{hitPoints.value}}
+	</div>
+	<div>
+		<b>Speed</b> {{speed.value}}ft.
+		{{#if burowSpeed.value}}, climb {{burowSpeed.value}}ft.{{/if}}
+		{{#if climbSpeed.value}}, climb {{climbSpeed.value}}ft.{{/if}}
+		{{#if flySpeed.value}}, climb {{flySpeed.value}}ft.{{/if}}
+		{{#if swimSpeed.value}}, climb {{swimSpeed.value}}ft.{{/if}}
+	</div>
+	
+	<hr>
+	
+	<div>
+		<table>
+			<tr>
+				<th>STR</th>
+				<th>DEX</th>
+				<th>CON</th>
+				<th>INT</th>
+				<th>WIS</th>
+				<th>CHA</th>
+			</tr>
+			<tr>
+				<td>{{strength.value}}</td>
+				<td>{{dexterity.value}}</td>
+				<td>{{constitution.value}}</td>
+				<td>{{intelligence.value}}</td>
+				<td>{{wisdom.value}}</td>
+				<td>{{charisma.value}}</td>
+			</tr>
+		</table>
+	</div>
+	
+	<hr>
+
+	<div>
+		<b>Saving Throws</b>
+		{{#if strengthSave.proficiency}}Str {{strengthSave.value}}{{/if}}
+		{{#if dexteritySave.proficiency}}Dex {{dexteritySave.value}}{{/if}}
+		{{#if constitutionSave.proficiency}}Con {{constitutionSave.value}}{{/if}}
+		{{#if intelligenceSave.proficiency}}Int {{intelligenceSave.value}}{{/if}}
+		{{#if wisdomSave.proficiency}}Wis {{wisdomSave.value}}{{/if}}
+		{{#if charismaSave.proficiency}}Cha {{charismaSave.value}}{{/if}}
+	</div>
+	<div>
+		<b>XXX</b> {{ATT.value}}
+	</div>
+	<div>
+		<b>XXX</b> {{ATT.value}}
+	</div>
+	<div>
+		<b>XXX</b> {{ATT.value}}
+	</div>
+	<div>
+		<b>XXX</b> {{ATT.value}}
+	</div>
+	<div>
+		<b>XXX</b> {{ATT.value}}
+	</div>
+</template>
