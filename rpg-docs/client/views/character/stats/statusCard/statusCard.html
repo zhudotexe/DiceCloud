@@ -1,0 +1,22 @@
+<template name="statusCard">
+	<div>
+		<paper-shadow class="card container" hero-id="main" {{detailHero ability ../_id}} layout horizontal>
+			<div class="green white-text subhead left statusBar" hero-id="toolbar" {{detailHero ability ../_id}} layout vertical center center-justified>
+				<!-- <div class="display1">{{characterCalculate "attributeValue" ../_id ability}}</div> -->
+				<div class="statusTitle clickable">Status</div>
+				<paper-icon-button class="white54" id="addStatus" icon="create" disabled={{#unless canEditCharacter _id}}true{{/unless}}></paper-icon-button>
+			</div>
+			<div class="right subhead" layout horizontal center>
+				<div flex class="list">
+					{{#each activeBuffs ../_id}}
+						<div class="item-slot">
+							<div class="item buff" hero-id="main" {{detailHero}} layout horizontal center>
+								{{name}}
+							</div>
+						</div>
+					{{/each}}					
+				</div>
+			</div>
+		</paper-shadow>
+	</div>
+</template>
