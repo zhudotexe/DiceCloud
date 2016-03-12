@@ -42,7 +42,7 @@ Template.statusDialog.helpers({
     		}
     	});
     });
-    console.log(conds);
+    // console.log(conds);
     return conds;
 	},
 	activeExhaustion: function() {
@@ -69,7 +69,7 @@ Template.statusDialog.helpers({
     		}
     	});      
     });
-    console.log(exhaust);
+    // console.log(exhaust);
     return exhaust;
 	},
 	conditions: function(){
