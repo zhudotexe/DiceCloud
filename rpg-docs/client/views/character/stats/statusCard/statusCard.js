@@ -16,9 +16,10 @@ Template.statusCard.helpers({
 
 Template.statusCard.events({
   "tap #addStatus": function(event){
-    GlobalUI.showDialog({
+    GlobalUI.setDetail({
       template: "statusDialog",
       data: {charId: this._id},
+      heroId: this._id,
     })
   },
   "tap .item": function(event){

@@ -8,13 +8,21 @@
 			</div>
 			<div class="right subhead" layout horizontal center>
 				<div flex class="list">
+				{{#if activeBuffs.count}}
 					{{#each activeBuffs ../_id}}
 						<div class="item-slot">
 							<div class="item buff" hero-id="main" {{detailHero}} layout horizontal center>
 								{{name}}
 							</div>
 						</div>
-					{{/each}}					
+					{{/each}}
+				{{else}}
+					<div class="item-slot">
+						<div class="item buff" hero-id="main" {{detailHero}} layout horizontal center>
+							Normal
+						</div>
+					</div>
+				{{/if}}
 				</div>
 			</div>
 		</paper-shadow>
