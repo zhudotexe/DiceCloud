@@ -10,13 +10,13 @@ Template.registerHelper("valueString", function(value) {
 
 	var resultArray = [];
 	if (gp > 0) {
-		resultArray.push(gp + "gp");
+		resultArray.push(gp + " gp");
 	}
 	if (sp > 0) {
-		resultArray.push(sp + "sp");
+		resultArray.push(sp + " sp");
 	}
 	if (cp > 0) {
-		resultArray.push(cp + "cp");
+		resultArray.push(cp + " cp");
 	}
 
 	//build string with correct spacing
