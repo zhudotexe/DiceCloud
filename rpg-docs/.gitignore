@@ -3,5 +3,6 @@
 .demeteorized
 settings.json
 public/components
+node_modules
 nohup.out
 dump
