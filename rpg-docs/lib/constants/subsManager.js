@@ -1,1 +1,0 @@
-subsManager = new SubsManager();

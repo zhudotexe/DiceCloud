@@ -1,0 +1,11 @@
+/* CSS declarations go here */
+* {
+    box-sizing: border-box;
+}
+html, body, #react-root {
+    height: 100%;
+}
+body {
+    margin: 0;
+    font-family: Roboto;
+}
