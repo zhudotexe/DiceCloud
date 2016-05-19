@@ -21,3 +21,6 @@ insecure                # Allow all DB writes from clients (for prototyping)
 static-html
 kadira:flow-router
 react-meteor-data
+accounts-password
+accounts-google
+qnub:accounts-react-material-ui
