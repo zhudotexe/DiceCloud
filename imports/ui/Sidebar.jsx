@@ -7,6 +7,16 @@ import ActionBugReport from 'material-ui/svg-icons/action/bug-report';
 import ActionList from 'material-ui/svg-icons/action/list';
 import Radium from 'radium';
 
+const UserAccountLink = () => {
+    const user = Meteor.user();
+    const loggedIn = user !== null && user !== undefined;
+    const path = loggedIn ? '/account' : '/login';
+    const text = loggedIn ? ((user.profile && user.profile.name) ||
+                            user.username || 'My Account')
+                          : 'Sign In';
+
+    return (<a href={path} style={styles.account.link}>{text}</a>)
+};
 class Sidebar extends React.Component {
     constructor(props) {
         super(props);
@@ -19,15 +29,17 @@ class Sidebar extends React.Component {
     render() {
         return (
             <div id='sidebar' style={[
-                styles.base,
+                styles.sidebar.base,
                 {display: this.display()}
             ]}>
-                <Paper rounded={false} style={styles.paperSidebar}>
-                    <div style={styles.paperCrown}></div>
-                    <a href="/" style={styles.link}>
+                <Paper rounded={false} style={styles.sidebar.paper}>
+                    <div style={styles.sidebar.image}>
+                        <UserAccountLink />
+                    </div>
+                    <a href="/" style={styles.sidebar.link}>
                         <MenuItem primaryText="Home" leftIcon={<ActionHome />} />
                     </a>
-                    <a href="/guide" style={styles.link}>
+                    <a href="/guide" style={styles.sidebar.link}>
                         <MenuItem primaryText="Guide" leftIcon={<SocialSchool />} />
                     </a>
                     <MenuItem primaryText="Send Feedback" leftIcon={<ActionBugReport />} />
@@ -42,24 +54,33 @@ class Sidebar extends React.Component {
 // a good workaround.
 export default Radium(Sidebar);
 var styles = {
-    base: {
-        flexDirection: 'column',
-        flexBasis: '256px',
-        flexShrink: 0,
-        height: '100%',
+    sidebar: {
+        base: {
+            flexDirection: 'column',
+            flexBasis: '256px',
+            flexShrink: 0,
+            height: '100%',
+        },
+        paper: {
+            marginTop: 0,
+            marginLeft: 0,
+            height: '100%',
+        },
+        image: {
+            backgroundImage: 'url(/png/paper-dice-crown.png)',
+            backgroundSize: 'cover',
+            display: 'block',
+            minHeight: '146px',
+            padding: '15px',
+        },
+        link: {
+            textDecoration: 'none',
+        },
     },
-    paperSidebar: {
-        marginTop: 0,
-        marginLeft: 0,
-        height: '100%',
-    },
-    paperCrown: {
-        backgroundImage: 'url(/png/paper-dice-crown.png)',
-        backgroundSize: 'cover',
-        display: 'block',
-        minHeight: '146px',
-    },
-    link: {
-        textDecoration: 'none',
+    account: {
+        link: {
+            color: 'white',
+        },
     },
 };
+

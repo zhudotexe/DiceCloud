@@ -1,12 +1,30 @@
 import React from 'react';
 import Radium from 'radium'
 import Flexbox from '../../Flexbox.jsx';
-import { grey500 } from 'material-ui/styles/colors';
+import { grey500, red600, grey100 } from 'material-ui/styles/colors';
+import RaisedButton from 'material-ui/RaisedButton';
 
 class SignInButtons extends React.Component {
     render() {
+        let user = Meteor.user();
+        if (user) return (<div />);
         return (
-            <div></div>
+            <Flexbox justifyContent='space-around'>
+                <RaisedButton
+                    label='Sign in'
+                    labelColor={grey100}
+                    backgroundColor={red600}
+                    style={styles.button}
+                    onTouchTap={() => FlowRouter.go('/login')}
+                />
+                <RaisedButton
+                    label='Sign up'
+                    labelColor={grey100}
+                    backgroundColor={red600}
+                    style={styles.button}
+                    onTouchTap={() => FlowRouter.go('/signup')}
+                />
+            </Flexbox>
         );
     }
 }
@@ -37,5 +55,9 @@ var styles = {
         fontSize: '36px',
         color: grey500,
         marginTop: '30px',
+    },
+    button: {
+        marginLeft: '20px',
+        marginRight:'20px',
     },
 };

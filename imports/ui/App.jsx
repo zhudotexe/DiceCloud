@@ -69,8 +69,8 @@ const muiTheme = getMuiTheme({
 
 export default AppContainer = createContainer(props => {
     return {
-        //user: Meteor.user(),
-        user: 'robert',
+        user: Meteor.user(),
+        //user: 'robert',
     };
 }, App);
 
