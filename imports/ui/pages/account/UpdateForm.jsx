@@ -60,7 +60,6 @@ class UpdateForm extends React.Component {
                     disabled={!this.state.changed ||
                         (!this.state.address || this.state.address.length < 1)}
                     onTouchTap={() => Meteor.call('updateUser',
-                        Meteor.userId(),
                         this.state.name,
                         this.state.address,
                         (error, result) => {

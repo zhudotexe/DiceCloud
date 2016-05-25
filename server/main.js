@@ -5,12 +5,12 @@ Meteor.startup(() => {
   // code to run on server at startup
   Accounts.emailTemplates.siteName = 'Dicecloud';
   Meteor.methods({
-      verify: function(id) {
-          Accounts.sendVerificationEmail(id);
+      verify: function() {
+          Accounts.sendVerificationEmail(this.userId);
       },
-      updateUser: function(id, name, email) {
+      updateUser: function(name, email) {
         Meteor.users.update(
-          {_id: id},
+          {_id: this.userId},
           {$set: {
             "profile.name": name,
             "emails": [{

@@ -24,7 +24,7 @@ const VerifiedIcon = (props) => {
                 disabled={needUpdate}
                 tooltip={needUpdate ? 'Please click Update first' : null}
                 backgroundColor={orange500}
-                onTouchTap={() => Meteor.call('verify', Meteor.userId())}
+                onTouchTap={() => Meteor.call('verify')}
             />
         );
     }
