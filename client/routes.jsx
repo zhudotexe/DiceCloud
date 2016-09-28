@@ -5,10 +5,11 @@ import { Accounts } from 'meteor/std:accounts-basic';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 import AppContainer from '../imports/ui/App.jsx';
+
 import Home from '../imports/ui/pages/Home.jsx';
 import { Login, Signup } from '../imports/ui/pages/Login.jsx';
-import Guide from '../imports/ui/pages/Guide.jsx';
 import Account from '../imports/ui/pages/Account.jsx';
+import Guide from '../imports/ui/pages/Guide.jsx';
 
 function scrollReset() {
     let element = document.getElementById('main');
