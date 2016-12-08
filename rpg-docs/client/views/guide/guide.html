@@ -5,90 +5,138 @@
 	</core-toolbar>
 	<div layout vertical center>
 		<paper-shadow class="wallOfText card" style="padding: 32px; max-width: 800px;">
-			<h2>Character Sheet Philosophy</h2>
-			<p>Setting up your character on Dicecloud is going to take you a little longer than just filling it in on a paper character sheet would have. The goal of using an online sheet is to make actually playing the game more streamlined, and ultimately more fun. So putting a little extra effort into setting up your character now will pay off over and over again once you're playing.</p>
-			<p>The idea is to track where each number comes from, and allow you to easily make changes on the fly.</p>
-			<p>Lets look at a hypothetical example.</p>
-			<p>You need to swim through a sunken section of dungeon to fetch the quest's Thing.<br>You'll need to take off your magical Plate Armor of +1 Constitution to swim without sinking, of course. Taking it off will change your armor class, your speed and your constitution, which in turn changes your hitpoints and your constitution saving throw. Working out all those changes in the middle of a game will drag the game to a hault. <br> Fortunately you have a digital character sheet, so it's a matter of dragging your Plate Armor +1 Con from your "equipment" box to your "backpack" box and you're done. Your hitpoints change correctly, your saving throws are up to date, your armor class goes back to reflecting the fact that you have natural armor from being a dragonborn. Your character sheet keeps up and you ultimately get more time to play the game. Huzzah!</p>
-			<h2>Creating a Character</h2>
-			<ul>
-				<li>In the <a href={{pathFor route="characterList"}}>character list</a>, click the plus button, floating in the bottom right corner.</li>
-				<li>Give your character a name, gender and race, these can be changed later if you change your mind. Then click the Add button</li>
-				<li>Your new character should open, with most of its attributes and abilities at zero.</li>
-			</ul>
+			{{#markdown}}
+## Character Sheet Philosophy
 
-			<h2>Adding Racial Effects</h2>
-			<p>You have already given your character a race, but you haven't yet specified what that race does for your character, so lets do that.</p>
-			<ul>
-				<li>Click the Journal tab</li>
-				<li>In the card that displays your level, click on your race to open the racial dialog box</li>
-				<li>Click the edit button in the top corner of the racial dialog</li>
-			</ul>
-			<p>In the edit mode of the racial dialog you can change your race's name and add effects and proficiencies your race gives you. We will only be adding the base traits our race gives us, specific features can go in the features tab so we can more easily reference them later.</p>
-			<p>Lets add some of the effects all races will give.</p>
-			<ul>
-				<li>Click the Add Effect button, a new effect should appear</li>
-				<li>In the Stat Group dropdown box, choose "Stats"</li>
-				<li>The second dropdown lets us choose which stat to effect, choose "Speed"</li>
-				<li>The third dropdown lets us choose how to effect that stat, choose "Base Value", since our character's base speed comes from their race</li>
-				<li>Finally, input the value for our characters speed, it'll probably be 30 unless you chose a slower race, such as a dwarf</li>
-				<li>Close the Race dialog and navigate to the Stats tab</li>
-				<li>The speed card should now correctly display the character's speed</li>
-				<li>Click the speed card to see how that value was calculated</li>
-				<li>Currently there is only one number effecting the total, the speed from our race, but as more effects from different sources start impacting our character's speed, they will show up here.</li>
-			</ul>
+Setting up your character on Dicecloud is going to take you a little longer than just filling it in on a paper character sheet would have. The goal of using an online sheet is to make actually playing the game more streamlined, and ultimately more fun. So putting a little extra effort into setting up your character now will pay off over and over again once you're playing.
 
-			<h2>Adding your ability scores</h2>
-			<p>Your character currently doesn't have any ability scores, so lets fix that. Whether you roll your abilities or point-buy them, lets add a feature to represent where they came from</p>
-			<ul>
-				<li>Navigate to the <emd>Features</emd> tab</li>
-				<li>Click the plus button in the bottom right to add a new feature</li>
-				<li>Give the Feature a name, like <em>Point Buy</em></li>
-				<li>Leave the feature as always enabled, don't limit its uses, and leave the description blank</li>
-				<li>Click the <em>Add Effect</em> button</li>
-				<li>For <em>Stat Group</em> choose <em>Ability Scores</em></li>
-				<li>For <em>Stat</em> choose <em>Strength</em></li>
-				<li>For the operation choose <em>Base Value</em></li>
-				<li>Input your character's rolled or point-bought strength, without the racial modfier</li>
-				<li>Repeat for the rest of your ability scores</li>
-			</ul>
-			<p>You can now check that your ability scores appear on your <em>Stats</em> page and that your skills that use them have their values calculated accordingly.</p>
-			<p>We didn't include your character's racial ability modifiers in the feature, so you should go back to your character's  racial dialog and add them in there as effects. Remember to use the add operation, rather than base value, since your race adds to your ability scores.</p>
-			<p>By separating the source of your character's stats you can easily check how your character got their ability scores and stats, even after 20 levels, without getting confused or making mistakes.</p>
+The idea is to track where each number comes from, and allow you to easily make changes on the fly.
 
-			<h2>Adding a Class</h2>
-			<p>Currently your character is at level 0, because they don't have any class levels. Let's fix that.</p>
-			<ul>
-				<li>Click the plus button in the card that currently says "Level 0"</li>
-				<li>A new class has now been added, name the class in the Class Name input and leave the level as 1</li>
-			</ul>
-			<p>We now have a class, lets add the saving throw proficiencies it gives us.</p>
-			<ul>
-				<li>Click the Add Proficiency button</li>
-				<li>Click the dropdown box that currently has "Skill" selected, and choose "Saving Throw" instead</li>
-				<li>In the second dropdown choose the first saving throw your class gives you</li>
-				<li>The third dropdown lets us specify if we have half or double our proficiency bonus for this proficiency, leave it at the default "proficient" for now</li>
-			</ul>
-			<p>If you navigate back to the stat page, you will see that you now have a proficiency bonus, based on your class level, and the saving throw you are proficienct in will take your proficiency bonus into account.</p>
-			<p>One of the most important things your class gives you is your hitpoints, so lets go add those now.</p>
-			<ul>
-				<li>Navigate to the class dialog box by clicking on your class name in the journal tab and hitting the edit button</li>
-				<li>Click the Add Effect button</li>
-				<li>Choose the <em>Stats</em> stat group, and choose the <em>Hitpoints</em> stat</li>
-				<li>Choose the <em>Base Value</em> operation</li>
-			</ul>
-			<p>Now we need to decide how many hitpoints our class gives us. We will assume that we take the constant hitpoints per level, since it's both the rule used for league play and it's statistically advantageous over rolling for hitpoints every level.</p>
-			<p>We could work out our hit points every level and change the effect each time, but we can do one better, we can input the calculation directly into the value field and have the character sheet figure it out for us</p>
-			<p>Let's assume we are rolling a fighter, so in the class name you typed in "Fighter" (with the capital F, but without the quote marks). A fighter gets 10 hp at first level and 6 hitpoints every level after that.</p>
-			<p>Lets rather split that into 4 bonus hitpoints at first level, and 6 hitpoints for every fighter level your character has. We can the write this as <em>4 + 6*FighterLevel</em> where the * represents multiplication.</p>
-			<p><em>Note, we don't add the constitution modifier here, that's already taken care of by default, since all characters add their constitution modifier to their hit points</em></p>
-			<ul>
-				<li>In the value field input <em>4 + 6 * FighterLevel</em>, the spaces aren't needed, but you must spell your class name exactly as it is spelt in the class name input box, capital letters and all, in our case "Fighter"</li>
-				<li>Create a new effect that effects the base value of <em>d10 Hit Dice</em> with the value of <em>FighterLevel</em>, since we also get our fighters level worth of hit dice</li>
-				<li>Check how your changes are reflected in the <em>Stats</em> tab</li>
-				<li>Change your level and check that the <em>Stats</em> tab gets updated accordingly</li>
-			</ul>
-			<p>You can try all sorts of calculations in your effects and in certain other places too. For example if you had some feature that is used a number of times equal to your wisdom modifier or 1, whichever is lower, you could limit its uses to <em>min(1, wisdomMod)</em> and the character sheet will figure it out for you, and update itself if you wisdom modifier happens to change later.</p>
+Lets look at a hypothetical example.
+
+You need to swim through a sunken section of dungeon to fetch the quest's Thing.
+You'll need to take off your magical Plate Armor of +1 Constitution to swim without sinking, of course. Taking it off will change your armor class, your speed and your constitution, which in turn changes your hitpoints and your constitution saving throw. Working out all those changes in the middle of a game will drag the game to a hault.
+Fortunately you have a digital character sheet, so it's a matter of dragging your Plate Armor +1 Con from your "equipment" box to your "backpack" box and you're done. Your hitpoints change correctly, your saving throws are up to date, your armor class goes back to reflecting the fact that you have natural armor from being a dragonborn. Your character sheet keeps up and you ultimately get more time to play the game. Huzzah!
+
+## Creating a Character
+
+- In the character list, click the plus button, floating in the bottom right corner.
+- Give your character a name, gender and race, these can be changed later if you change your mind. Then click the Add button
+- Your new character should open, with most of its attributes and abilities at zero.
+
+## Adding Racial Effects
+
+You have already given your character a race, but you haven't yet specified what that race does for your character, so lets do that.
+
+- Click the Journal tab
+- In the card that displays your level, click on your race to open the racial dialog box
+- Click the edit button in the top corner of the racial dialog
+
+In the edit mode of the racial dialog you can change your race's name and add effects and proficiencies your race gives you. We will only be adding the base traits our race gives us, specific features can go in the features tab so we can more easily reference them later.
+
+Lets add some of the effects all races will give.
+
+- Click the Add Effect button, a new effect should appear
+- In the Stat Group dropdown box, choose "Stats"
+- The second dropdown lets us choose which stat to effect, choose "Speed"
+- The third dropdown lets us choose how to effect that stat, choose "Base Value", since our character's base speed comes from their race
+- Finally, input the value for our characters speed, it'll probably be 30 unless you chose a slower race, such as a dwarf
+- Close the Race dialog and navigate to the Stats tab
+- The speed card should now correctly display the character's speed
+- Click the speed card to see how that value was calculated
+
+Currently there is only one number affecting the total, the speed from our race, but as more effects from different sources start impacting our character's speed, they will show up here.
+
+## Adding your ability scores
+
+Your character currently doesn't have any ability scores, so lets fix that. Whether you roll your abilities or point-buy them, lets add a feature to represent where they came from
+
+- Navigate to the Features tab
+- Click the plus button in the bottom right to add a new feature
+- Give the Feature a name, like Point Buy
+- Leave the feature as always enabled, don't limit its uses, and leave the description blank
+- Click the Add Effect button
+- For Stat Group choose Ability Scores
+- For Stat choose Strength
+- For the operation choose Base Value
+- Input your character's rolled or point-bought strength, without the racial modfier
+- Repeat for the rest of your ability scores
+
+You can now check that your ability scores appear on your Stats page and that your skills that use them have their values calculated accordingly.
+
+We didn't include your character's racial ability modifiers in the feature, so you should go back to your character's racial dialog and add them in there as effects. Remember to use the add operation, rather than base value, since your race adds to your ability scores.
+
+By separating the source of your character's stats you can easily check how your character got their ability scores and stats, even after 20 levels, without getting confused or making mistakes.
+
+## Adding a Class
+
+Currently your character is at level 0, because they don't have any class levels. Let's fix that.
+
+- Click the plus button in the card that currently says "Level 0"
+- A new class has now been added, name the class in the Class Name input and leave the level as 1
+
+We now have a class, lets add the saving throw proficiencies it gives us.
+
+- Click the Add Proficiency button
+- Click the dropdown box that currently has "Skill" selected, and choose "Saving Throw" instead
+- In the second dropdown choose the first saving throw your class gives you
+- The third dropdown lets us specify if we have half or double our proficiency bonus for this proficiency, leave it at the default "proficient" for now
+
+If you navigate back to the stat page, you will see that you now have a proficiency bonus, based on your class level, and the saving throw you are proficienct in will take your proficiency bonus into account.
+
+One of the most important things your class gives you is your hitpoints, so lets go add those now.
+
+- Navigate to the class dialog box by clicking on your class name in the journal tab and hitting the edit button
+- Click the Add Effect button
+- Choose the Stats stat group, and choose the Hitpoints stat
+- Choose the Base Value operation
+
+Now we need to decide how many hitpoints our class gives us. We will assume that we take the constant hitpoints per level, since it's both the rule used for Adventure League play and it's statistically advantageous over rolling for hitpoints every level.
+
+We could work out our hit points every level and change the effect each time, but we can do one better, we can input the calculation directly into the value field and have the character sheet figure it out for us
+
+Let's assume we are rolling a fighter, so in the class name you typed in "Fighter" (with the capital F, but without the quote marks). A fighter gets 10 hp at first level and 6 hitpoints every level after that.
+
+Lets rather split that into 4 bonus hitpoints at first level, and 6 hitpoints for every fighter level your character has. We can the write this as `4 + 6 * FighterLevel` where the * represents multiplication.
+
+Note, we don't add the constitution modifier here, that's already taken care of by default, since all characters add their constitution modifier to their hit points
+
+- In the value field input `4 + 6 * FighterLevel`, the spaces aren't needed, but you must spell your class name exactly as it is spelt in the class name input box, capital letters and all, in our case "Fighter"
+- Create a new effect that affects the base value of d10 Hit Dice with the value of FighterLevel, since we also get our fighters level worth of hit dice
+- Check how your changes are reflected in the Stats tab
+- Change your level and check that the Stats tab gets updated accordingly
+
+You can try all sorts of calculations in your effects and in certain other places too. For example if you had some feature that is used a number of times equal to your wisdom modifier or 1, whichever is lower, you could limit its uses to `min(1, wisdomMod)` and the character sheet will figure it out for you, and update itself if you wisdom modifier happens to change later.
+
+---
+
+## How to use Variables
+
+#### Automatic variables
+
+- When calculating hitpoints, your {constitutionMod} is automatically applied, you don't have to include it every level
+- When calculating armor class, your {dexterityMod} is automatically applied
+- **Note:** When you're using heavy armor, it does not benefit, or suffer, from the `{dexterityMod}`, and medium armor limits the dexterity armor bonus to a maximum of 2
+- To model this, add an effect to your armor which affects the `Dexterity Armor Bonus` stat with a `max` value of `2` For medium armor,  and a `multiply` of `0` for heavy armor
+
+#### Stat Variables
+
+When writing a text block, variables and formulae can be inserted by using `{` and `}`.
+
+When inserting a variable into a value slot that should be a number, you don't need the `{` and `}`. When you are trying to calculate numbers, it's wise to save and check your formula often. If the calculated value appears as *NaN* this means the result is Not A Number. NaN can also occur if you have made a loop, like `strength = dexterity + 1` and `dexterity = strength *2`, strength relies on dexterity and dexterity relies on strength, so it will loop forever and never give you an answer.
+
+If a variable name does not get converted into a number, check your spelling. If you write `{consititutionMod + 8 + level}` and it resolves to `consititutionMod + 8 + 4`, it means that level was resolved to `4`, but DiceCloud had no idea what `consititutionMod` is, so it didn't replace it. In this case, it's a typo that needs fixing, but it might also mean that the variable doesn't exist, or is called something else.
+
+#### Class Variables
+
+If you call your class "Fighter" then you can use `{FighterLevel}`, ensure your capital in `Fighter` is identical.
+
+---
+
+## Suggested Feature Card Format
+
+Summarise the feature in the first paragraph, then add a horizontal rule (`---` on its own line), any details and paragraphs after the line break will only appear when you open the feature card, and only the summary will be shown on the character sheet.
+			{{/markdown}}
 		</paper-shadow>
 	</div>
 </template>
