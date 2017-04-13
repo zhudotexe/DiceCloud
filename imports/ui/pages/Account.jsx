@@ -1,8 +1,7 @@
 import React from 'react';
-import Radium from 'radium';
-import Flexbox from '../Flexbox.jsx';
-import { StyleRoot } from 'radium';
+import Col from 'jsxstyle/Col';
 import UpdateForm from './account/UpdateForm.jsx';
+import { Accounts}  from 'meteor/std:accounts-basic';
 
 class Account extends React.Component {
     constructor(props) {
@@ -11,25 +10,13 @@ class Account extends React.Component {
 
     render() {
         return (
-            <StyleRoot>
-                <Flexbox style={styles.responsive}>
-                    <Accounts.ui.LoginForm />
-                    <UpdateForm />
-                </Flexbox>
-            </StyleRoot>
+            <Col justifyContent='spaceBetween' alignItems='center'>
+                <Accounts.ui.LoginForm />
+                <UpdateForm
+                    user={this.props.user}
+                />
+            </Col>
         );
     }
 };
-export default Radium(Account);
-
-const styles = {
-    responsive: {
-        flexDirection: 'row',
-        justifyContent: 'spaceBetween',
-        alignItems: 'center',
-        // 923 = 667 + 256; 256 is width of sidebar
-        '@media (max-width: 923px)': {
-            flexDirection: 'column',
-        },
-    },
-};
+export default Account;

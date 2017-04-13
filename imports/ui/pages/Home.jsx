@@ -1,6 +1,5 @@
 import React from 'react';
-import Radium from 'radium';
-import Flexbox from '../Flexbox.jsx';
+import Col from 'jsxstyle/Col';
 import { grey300, grey900 } from 'material-ui/styles/colors';
 import Splash from './home/Splash.jsx';
 import DemoSheets from './home/DemoSheets.jsx';
@@ -9,15 +8,15 @@ import Blurbs from './home/Blurbs.jsx';
 class Home extends React.Component {
     render() {
         return (
-            <Flexbox dir='column'>
+            <Col width='100%'>
                 <Splash style={styles.dark} />
                 <DemoSheets style={styles.light} />
                 <Blurbs style={styles.dark} />
-            </Flexbox>
+            </Col>
         );
     }
 }
-export default Radium(Home);
+export default Home;
 
 var styles = {
     light: {

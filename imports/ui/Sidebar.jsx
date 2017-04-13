@@ -1,23 +1,43 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Paper from 'material-ui/Paper';
 import MenuItem from 'material-ui/MenuItem';
 import ActionHome from 'material-ui/svg-icons/action/home';
+import SocialPeople from 'material-ui/svg-icons/social/people';
 import SocialSchool from 'material-ui/svg-icons/social/school';
 import ActionBugReport from 'material-ui/svg-icons/action/bug-report';
 import ActionList from 'material-ui/svg-icons/action/list';
-import Radium from 'radium';
+import Col from 'jsxstyle/Col';
+import Block from 'jsxstyle/Block';
+import Inline from 'jsxstyle/Inline';
 
+const Link = (props) => (
+    <Inline component='a' props={{href: props.href}} color='white'>{props.children}</Inline>
+);
+Link.propTypes = {
+    href: PropTypes.string.isRequired,
+    children: PropTypes.node.isRequired,
+};
 const UserAccountLink = () => {
     const user = Meteor.user();
-    const loggedIn = user !== null && user !== undefined;
-    const path = loggedIn ? '/account' : '/login';
-    const text = loggedIn ? ((user.profile && user.profile.name) ||
-                            user.username || 'My Account')
-                          : 'Sign In';
+    const path = user ? '/account' : '/login';
+    const text = user ? ((user.profile && user.profile.name) ||
+                          user.username || 'My Account')
+                        : 'Sign In';
 
-    return (<a href={path} style={styles.account.link}>{text}</a>)
+    return (<Link href={path}>{text}</Link>);
 };
-class Sidebar extends React.Component {
+const LogoImage = () => (
+    <Block
+        minHeight='146px'
+        padding='15px'
+        backgroundSize='cover'
+        backgroundImage='url(/png/paper-dice-crown.png)'
+    >
+        <UserAccountLink />
+    </Block>
+);
+export default class Sidebar extends React.Component {
     constructor(props) {
         super(props);
         this.render = this.render.bind(this);
@@ -28,58 +48,34 @@ class Sidebar extends React.Component {
     }
     render() {
         return (
-            <div id='sidebar' style={[
-                styles.sidebar.base,
-                {display: this.display()}
-            ]}>
+            <Col flex='0 0 256px' height='100%' display={this.display()}>
                 <Paper rounded={false} style={styles.sidebar.paper}>
-                    <div style={styles.sidebar.image}>
-                        <UserAccountLink />
-                    </div>
-                    <a href="/" style={styles.sidebar.link}>
+                    <LogoImage />
+                    <Link href="/">
                         <MenuItem primaryText="Home" leftIcon={<ActionHome />} />
-                    </a>
-                    <a href="/guide" style={styles.sidebar.link}>
+                    </Link>
+                    {Meteor.user() ?
+                        <Link href="/characters">
+                            <MenuItem primaryText="Characters" leftIcon={<SocialPeople />} />
+                        </Link>
+                        : <div></div>
+                    }
+                    <Link href="/guide">
                         <MenuItem primaryText="Guide" leftIcon={<SocialSchool />} />
-                    </a>
+                    </Link>
                     <MenuItem primaryText="Send Feedback" leftIcon={<ActionBugReport />} />
                     <MenuItem primaryText="Changelog" leftIcon={<ActionList />} />
                 </Paper>
-            </div>
+            </Col>
         );
     }
 }
-// meteor's ecmascript package doesn't do decorators yet, so
-// we can't just say "@Radium export default class..."; this is
-// a good workaround.
-export default Radium(Sidebar);
 var styles = {
     sidebar: {
-        base: {
-            flexDirection: 'column',
-            flexBasis: '256px',
-            flexShrink: 0,
-            height: '100%',
-        },
         paper: {
             marginTop: 0,
             marginLeft: 0,
             height: '100%',
-        },
-        image: {
-            backgroundImage: 'url(/png/paper-dice-crown.png)',
-            backgroundSize: 'cover',
-            display: 'block',
-            minHeight: '146px',
-            padding: '15px',
-        },
-        link: {
-            textDecoration: 'none',
-        },
-    },
-    account: {
-        link: {
-            color: 'white',
         },
     },
 };

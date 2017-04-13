@@ -3,24 +3,27 @@ export const updateUser = new ValidatedMethod({
     validate: new SimpleSchema({
         name: {
             type: String,
-            regEx: /[^\s]+/
+            regEx: /[^\s]*/
         },
-        email: {
+        address: {
             type: String,
             regEx: SimpleSchema.RegEx.Email
         }
     }).validator(),
-    run({ name, email }) {
+    run({ name, address }) {
+        const user = Meteor.users.findOne({_id: Meteor.userId()});
+        const alreadyVerified = user.emails && user.emails.some(email => {
+            return email.address === address & email.verified
+        });
         Meteor.users.update(
-            {_id: this.userId},
+            {_id: Meteor.userId()},
             {$set: {
                 'profile.name': name,
                 'emails': [{
-                    address: email,
-                    verified: false
+                    address: address,
+                    verified: alreadyVerified
                 }]
             }}
         )
     }
 });
-

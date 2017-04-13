@@ -1,8 +1,10 @@
 import React from 'react';
 import Paper from 'material-ui/Paper';
+import Row from 'jsxstyle/Row';
+
 export default class Guide extends React.Component {
     render() {
-        return (
+        return (<Row justifyContent='center'>
             <Paper style={{padding: 32, maxWidth: 800}}>
                 <h2>Character Sheet Philosophy</h2>
                 <p>Setting up your character on Dicecloud is going to take you a little longer than just filling it in on a paper character sheet would have. The goal of using an online sheet is to make actually playing the game more streamlined, and ultimately more fun. So putting a little extra effort into setting up your character now will pay off over and over again once you're playing.</p>
@@ -91,7 +93,7 @@ export default class Guide extends React.Component {
                 </ul>
                 <p>You can try all sorts of calculations in your effects and in certain other places too. For example if you had some feature that is used a number of times equal to your wisdom modifier or 1, whichever is lower, you could limit its uses to <em>min(1, wisdomMod)</em> and the character sheet will figure it out for you, and update itself if you wisdom modifier happens to change later.</p>
             </Paper>
-        );
+        </Row>);
     }
 }
 

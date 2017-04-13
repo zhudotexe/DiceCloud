@@ -1,6 +1,5 @@
 import React from 'react';
-import Radium from 'radium';
-import Flexbox from '../../Flexbox';
+import Col from 'jsxstyle/Col';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import { indigo500 } from 'material-ui/styles/colors';
@@ -19,7 +18,7 @@ class ChangePassword extends React.Component {
 
     render() {
         return (
-            <Flexbox dir='column'>
+            <Col>
                 <h2>Change Password</h2>
                 <TextField
                     floatingLabelText='Current Password'
@@ -66,7 +65,7 @@ class ChangePassword extends React.Component {
                         () => FlowRouter.go('/account'))}
                     style={styles.buttonSpacer}
                     />
-            </Flexbox>
+            </Col>
         );
     }
 }

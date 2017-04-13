@@ -1,13 +1,19 @@
 import React from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 import Sidebar from './Sidebar.jsx'
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import AppBar from 'material-ui/AppBar';
-import Flexbox from './Flexbox.jsx';
-import Radium from 'radium';
-
+import Flex from 'jsxstyle/Flex';
+import Col from 'jsxstyle/Col';
+import Block from 'jsxstyle/Block';
 import { grey800, darkBlack } from 'material-ui/styles/colors';
+
+import injectTapEventPlugin from 'react-tap-event-plugin';
+injectTapEventPlugin();
+
+import jsxstyle from 'jsxstyle';
+jsxstyle.install();
 
 class App extends React.Component {
     constructor(props) {
@@ -23,54 +29,45 @@ class App extends React.Component {
 
     render() {
         return (
-            <MuiThemeProvider muiTheme={muiTheme}>
-                <Flexbox style={styles.app}>
-                    <Sidebar visible={this.state.drawer} />
-                    <Flexbox dir='column' style={styles.body}>
-                        <header style={styles.header}>
+            <MuiThemeProvider muiTheme={getMuiTheme(theme)}>
+                <Flex height='100%' overflow='hidden'>
+                    <Sidebar
+                        visible={this.state.drawer}
+                        user={this.props.user}
+                    />
+                    <Col width='100%' backgroundColor='#e0e0e0'>
+                        <Flex component='header' flexGrow='0' flexShrink='0'>
                             <AppBar
                                 title={this.props.title}
                                 titleStyle={{fontSize: '1.3em'}}
                                 onLeftIconButtonTouchTap={this.toggleDrawer}
+                                style={this.props.barColor ? {
+                                    backgroundColor: this.props.barColor,
+                                } : {}}
+                                zDepth={this.props.barColor ? 0 : 1}
                             />
-                        </header>
-                        <div id="main" style={styles.main}>
-                            {this.props.view}
-                        </div>
-                    </Flexbox>
-                </Flexbox>
+                        </Flex>
+                        <Block id="main" flexGrow='1' overflow='auto'>
+                            {React.cloneElement(this.props.view, {user: this.props.user})}
+                        </Block>
+                    </Col>
+                </Flex>
             </MuiThemeProvider>
         );
     }
 }
-App = Radium(App);
-var styles = {
-    app: {
-        height: '100%',
-        overflow: 'hidden',
-    },
-    body: {
-        width: '100%',
-    },
-    header: {
-        flex: '0 1 auto',
-    },
-    main: {
-        flex: '1 1 auto',
-        overflow: 'auto',
-    }
-};
-const muiTheme = getMuiTheme({
+const theme = {
     palette: {
         primary1Color: grey800,
         textColor: darkBlack,
     },
-});
+};
 
-export default AppContainer = createContainer(props => {
+const AppContainer = createContainer(props => {
+    const user = Meteor.user()
     return {
-        user: Meteor.user(),
-        //user: 'robert',
+        user: user
     };
 }, App);
+export default AppContainer;
 

@@ -1,53 +1,40 @@
 import React from 'react';
-import Radium from 'radium';
-import Flexbox from '../../Flexbox.jsx';
-import { Card, CardHeader, CardText } from 'material-ui/Card';
+import Col from 'jsxstyle/Col';
+import Row from 'jsxstyle/Row';
+import Block from 'jsxstyle/Block';
+import CharacterCard from '../../CharacterCard.jsx';
+import { GetCharacter } from '../../../character_retriever.js';
 import { grey50, grey600, green500, deepPurple500 } from 'material-ui/styles/colors';
 
 const DemoSheets = ({style}) => (
-    <Flexbox dir='column' style={style} alignItems='center'>
-        <Flexbox dir='column' alignItems='flex-start'>
-            <div style={styles.title}>
+    <Col alignItems='center' style={style}>
+        <Col alignItems='flex-start'>
+            <Block fontSize='34px' color={grey600}>
                 Character Sheet Open Beta
-            </div>
+            </Block>
             <h2> Check out the example characters </h2>
             <CardRow />
-        </Flexbox>
-    </Flexbox>
+        </Col>
+    </Col>
 );
 const CardRow = () => (
-    <Flexbox flexWrap='wrap' justifyContent='space-between'>
-        <Card style={styles.exampleCard} zDepth={3}>
-            <CardHeader
-                title='Starter Set Archer'
-                titleStyle={styles.cardTitle}
-                style={{backgroundColor: green500}}
-            />
-            <CardText> Lawful Good Human </CardText>
-        </Card>
-        <Card style={styles.exampleCard} zDepth={3}>
-            <CardHeader
-                title='Starter Set Wizard'
-                titleStyle={styles.cardTitle}
-                style={{backgroundColor: deepPurple500}}
-            />
-            <CardText> Chaotic Good High Elf </CardText>
-        </Card>
-    </Flexbox>
+    <Row flexWrap='wrap' justifyContent='space-between'>
+        <CharacterCard
+            zDepth={3}
+            style={styles.exampleCard}
+            character={GetCharacter('starter-set-ranger')}
+        />
+        <CharacterCard
+            zDepth={3}
+            style={styles.exampleCard}
+            character={GetCharacter('starter-set-wizard')}
+        />
+    </Row>
 );
-export default Radium(DemoSheets);
+export default DemoSheets;
 var styles = {
-    title: {
-        fontSize: '34px',
-        color: grey600,
-    },
     exampleCard: {
         margin: '4px',
         zDepth: 3,
     },
-    cardTitle: {
-        color: grey50,
-        fontWeight: 'normal',
-    },
-
 };

@@ -9,3 +9,7 @@ body {
     margin: 0;
     font-family: Roboto;
 }
+.grid-three-col > * {
+    flex: 0 0 33.3333%;
+    margin-bottom: 8px;
+}

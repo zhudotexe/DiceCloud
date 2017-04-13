@@ -1,87 +1,84 @@
 import React from 'react';
-import Radium from 'radium';
-import Flexbox from '../../Flexbox';
+import Row from 'jsxstyle/Row';
+import Col from 'jsxstyle/Col';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import VerifiedIcon from './VerifiedIcon.jsx';
 import { deepPurple500 } from 'material-ui/styles/colors';
 
-class UpdateForm extends React.Component {
+export default class UpdateForm extends React.Component {
     constructor(props) {
         super(props);
-        const user = Meteor.user();
-        this.defaults = {
-            name:     user.profile && user.profile.name      || null,
-            address:  user.emails  && user.emails[0].address || null,
-        };
-        this.state = {
-            name:     this.defaults.name,
-            address:  this.defaults.address,
-            verified: user.emails  && user.emails[0].verified,
-            changed:  false,
-        };
-        this.setChanged = this.setChanged.bind(this);
+        const user = this.props.user;
+        this.state = this.getStateFromUser(user);
     }
-    setChanged() {
-        this.setState({
-            changed: (this.state.name    !== this.defaults.name) ||
-                     (this.state.address !== this.defaults.address),
-        });
+    getStateFromUser = (user) => {
+        const defaults = {
+            name:     user && user.profile && user.profile.name      || null,
+            address:  user && user.emails  && user.emails[0].address || null,
+        };
+        return {
+            defaults: defaults,
+            name:     defaults.name,
+            address:  defaults.address,
+            verified: user && user.emails && user.emails[0].verified,
+        };
+    }
+    onNameChange = (event, value)  => this.setState({name: value});
+    onEmailChange = (event, value) => this.setState({address: value});
+    onUpdateTap = () => {
+        Meteor.call('updateUser', {
+            name: this.state.name,
+            address: this.state.address,
+        }, (error, result) => {if (error) { console.warn(error)}});
+    }
+    componentWillReceiveProps(nextProps) {
+        const user = nextProps.user;
+        this.setState(this.getStateFromUser(user));
     }
     render() {
+        const changed = (this.state.name    !== this.state.defaults.name) ||
+                        (this.state.address !== this.state.defaults.address);
+        const updatable = changed && this.state.address && this.state.address.length > 0;
+        if (this.props.user === undefined) {
+            return (<div>Loading...</div>);
+        }
         return (
-            <Flexbox dir='column' style={styles.base}>
+            <Col marginBottom='20px'>
                 <h2>Profile Information</h2>
                 <TextField
                     floatingLabelText="Name"
                     defaultValue={this.state.name}
-                    onChange={(event, value) => {
-                        this.setState({name: value}, this.setChanged);
-                    }}
+                    onChange={this.onNameChange}
                 />
-                <Flexbox alignItems='center'>
+                <Row alignItems='center'>
                     <TextField
                         floatingLabelText="Email"
                         defaultValue={this.state.address}
                         errorText={this.state.address && this.state.address.length > 0 ? null : 'This field is required'}
-                        onChange={(event, value) => {
-                            this.setState({address: value}, this.setChanged);
-                        }}
+                        onChange={this.onEmailChange}
                         style={styles.roomForError}
                     />
                     <VerifiedIcon
                         address={this.state.address}
                         verified={this.state.verified}
                     />
-                </Flexbox>
+                </Row>
                 <RaisedButton
                     label='Update'
                     backgroundColor={deepPurple500}
-                    disabled={!this.state.changed ||
-                        (!this.state.address || this.state.address.length < 1)}
-                    onTouchTap={() => Meteor.call('updateUser',
-                        this.state.name,
-                        this.state.address,
-                        (error, result) => {
-                            if (error)
-                                console.warn(error);
-                            this.setChanged();
-                        }
-                    )}
+                    disabled={!updatable}
+                    onTouchTap={this.onUpdateTap}
                 />
-            </Flexbox>
+            </Col>
         );
     }
 };
-export default Radium(UpdateForm);
 
 const styles = {
-    base: {
-        marginBottom: '20px',
-    },
     roomForError: {
         marginBottom: '15px',
-        marginRight: '4px',
+        marginRight: '10px',
     },
 };
 
