@@ -1,17 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Row from 'jsxstyle/Row';
 import Col from 'jsxstyle/Col';
 import Block from 'jsxstyle/Block';
 import TextField from 'material-ui/TextField';
 import Slider from 'material-ui/Slider';
 import SvgIcon from 'material-ui/SvgIcon';
-import StatCard from './StatCard.jsx';
-import { Card, CardHeader } from 'material-ui/Card';
+import { Card } from 'material-ui/Card';
 import { grey600, lightBlue500, teal500, deepOrange500, purple500, pink500, indigo500, red500, grey100, green500 } from 'material-ui/styles/colors.js';
-import LabeledCard from '../../LabeledCard.jsx';
-import CarryingAndJumping from './CarryingAndJumping.jsx';
 
 import { px, statCardHeight, margin, displaySign } from '../../../defines.js';
+import LabeledCard from '../../LabeledCard.jsx';
+
+import CarryingAndJumping from './CarryingAndJumping.jsx';
+import StatCard from './StatCard.jsx';
 
 const HPCardLabel = (props) => (
     <Col alignItems='center' color={grey100}>
@@ -39,7 +40,7 @@ const HPCard = (props) => (
 const SmallStatCard = (props) => (
     <LabeledCard
         color={props.color}
-        label={<Block color='rgba(240, 240, 240, 0.8)' fontSize='200%'>{props.label}</Block>}
+        label={<Block color={grey100} fontSize='200%'>{props.label}</Block>}
         height={px(0.8*statCardHeight)}
     > {props.name} </LabeledCard>
 );
@@ -71,7 +72,7 @@ const Skill = (props) => (
     <Proficiency
         skill={props.skill}
         mod={props.stat + 'Mod'}
-        text={props.skill.replace(/([A-Z])/g, " $1").toLowerCase()}
+        text={props.skill.replace(/([A-Z])/g, ' $1').toLowerCase()}
         stats={props.stats}
         proficiencies={props.proficiencies}
     />
@@ -149,7 +150,7 @@ const Stats = (props) => {
                 <Col flexGrow={1}>
                     <Card>
                         <Col alignItems='stretch'>
-							<Row alignItems='center' justifyContent='center' padding='16px'>Saving Throws</Row>
+                            <Row alignItems='center' justifyContent='center' padding='16px'>Saving Throws</Row>
                             <SavingThrow stats={props.stats} proficiencies={props.proficiencies} stat='strength' />
                             <SavingThrow stats={props.stats} proficiencies={props.proficiencies} stat='dexterity' />
                             <SavingThrow stats={props.stats} proficiencies={props.proficiencies} stat='constitution' />
@@ -163,7 +164,7 @@ const Stats = (props) => {
                 <Col flexGrow={1}>
                     <Card>
                         <Col alignItems='stretch'>
-							<Row alignItems='center' justifyContent='center' padding='16px'>Skills</Row>
+                            <Row alignItems='center' justifyContent='center' padding='16px'>Skills</Row>
                             {skills.map(skill => (
                                 <Skill
                                     key={skill.name}
@@ -179,5 +180,5 @@ const Stats = (props) => {
             </Row>
         </Col>
     );
-}
+};
 export default Stats;

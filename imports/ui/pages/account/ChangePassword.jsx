@@ -1,4 +1,6 @@
 import React from 'react';
+import { Accounts } from 'meteor/meteor';
+import { FlowRouter } from 'meteor/kadira:flow-router';
 import Col from 'jsxstyle/Col';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';

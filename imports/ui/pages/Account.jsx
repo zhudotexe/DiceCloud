@@ -1,7 +1,8 @@
 import React from 'react';
-import Col from 'jsxstyle/Col';
-import UpdateForm from './account/UpdateForm.jsx';
 import { Accounts}  from 'meteor/std:accounts-basic';
+import Col from 'jsxstyle/Col';
+
+import UpdateForm from './account/UpdateForm.jsx';
 
 class Account extends React.Component {
     constructor(props) {
@@ -18,5 +19,5 @@ class Account extends React.Component {
             </Col>
         );
     }
-};
+}
 export default Account;

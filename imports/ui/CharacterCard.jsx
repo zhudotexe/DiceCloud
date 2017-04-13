@@ -15,7 +15,7 @@ Link.propTypes = {
 };
 
 const CharacterCard = (props) => {
-    const { character, linkStyle, ...rest } = props;
+    const { character, ...rest } = props;
     const text = [character.alignment, character.gender, character.race.name]
         .filter(str => str) // take out undefineds
         .join(' ');

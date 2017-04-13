@@ -1,19 +1,23 @@
 import React from 'react';
+import { Meteor } from 'meteor/meteor';
 import { createContainer } from 'meteor/react-meteor-data';
-import Sidebar from './Sidebar.jsx'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import AppBar from 'material-ui/AppBar';
 import Flex from 'jsxstyle/Flex';
 import Col from 'jsxstyle/Col';
 import Block from 'jsxstyle/Block';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import AppBar from 'material-ui/AppBar';
 import { grey800, darkBlack } from 'material-ui/styles/colors';
 
+import Sidebar from './Sidebar.jsx'; /* eslint "import/order": "off" */
+
+/* eslint-disable */
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
 import jsxstyle from 'jsxstyle';
 jsxstyle.install();
+/* eslint-enable */
 
 class App extends React.Component {
     constructor(props) {
@@ -23,7 +27,7 @@ class App extends React.Component {
         this.render = this.render.bind(this);
     }
 
-    toggleDrawer(bool) {
+    toggleDrawer() {
         this.setState({ drawer: !this.state.drawer });
     }
 
@@ -63,8 +67,8 @@ const theme = {
     },
 };
 
-const AppContainer = createContainer(props => {
-    const user = Meteor.user()
+const AppContainer = createContainer(() => {
+    const user = Meteor.user();
     return {
         user: user
     };

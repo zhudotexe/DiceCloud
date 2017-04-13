@@ -1,9 +1,11 @@
-import React from 'react';
-import Col from 'jsxstyle/Col';
-import Row from 'jsxstyle/Row';
+import { grey100, grey500, red600 } from 'material-ui/styles/colors';
 import Block from 'jsxstyle/Block';
-import { grey500, red600, grey100 } from 'material-ui/styles/colors';
+import Col from 'jsxstyle/Col';
 import RaisedButton from 'material-ui/RaisedButton';
+import React from 'react';
+import Row from 'jsxstyle/Row';
+import Meteor from 'meteor/meteor';
+import { FlowRouter } from 'meteor/kadira:flow-router';
 
 const SignInButtons = () => {
     let user = Meteor.user();

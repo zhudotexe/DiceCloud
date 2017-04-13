@@ -1,4 +1,6 @@
+import { describe, it } from 'mocha';
 import chai from 'chai';
+
 describe('mocha runs our tests successfully', function() {
     it('asserts with chai', function() {
         var expect = chai.expect;

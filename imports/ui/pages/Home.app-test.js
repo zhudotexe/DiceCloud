@@ -1,8 +1,10 @@
+import { beforeEach, describe, it } from 'mocha';
+import { DDP } from 'meteor/ddp-client';
+import { FlowRouter } from 'meteor/kadira:flow-router';
 import { Meteor } from 'meteor/meteor';
 import { Promise } from 'meteor/promise';
-import { FlowRouter } from 'meteor/kadira:flow-router';
-import { DDP } from 'meteor/ddp-client';
 import chai from 'chai';
+
 const expect = chai.expect;
 
 const waitForSubscriptions = () => new Promise(resolve => {
@@ -14,15 +16,15 @@ const waitForSubscriptions = () => new Promise(resolve => {
     }, 200);
 });
 
-const afterFlushPromise = new Promise((resolve, reject) => {
-    Tracker.afterFlush((err, val) => {
-        if (err) {
-            reject(err);
-        } else {
-            resolve(val);
-        }
-    });
-});
+//const afterFlushPromise = new Promise((resolve, reject) => {
+//    Tracker.afterFlush((err, val) => {
+//        if (err) {
+//            reject(err);
+//        } else {
+//            resolve(val);
+//        }
+//    });
+//});
 
 const generateData = () => {
     return new Promise(resolve => resolve());

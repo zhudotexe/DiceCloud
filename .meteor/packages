@@ -24,7 +24,6 @@ accounts-password@1.3.5
 accounts-google@1.1.2
 std:accounts-basic
 dispatch:mocha-phantomjs
-aldeed:simple-schema
 aldeed:collection2
 mdg:validated-method
 practicalmeteor:mocha

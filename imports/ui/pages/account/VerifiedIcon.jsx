@@ -1,4 +1,5 @@
 import React from 'react';
+import { Meteor } from 'meteor/meteor';
 import AlertWarning from 'material-ui/svg-icons/alert/warning';
 import ActionCheckCircle from 'material-ui/svg-icons/action/check-circle';
 import IconButton from 'material-ui/IconButton';

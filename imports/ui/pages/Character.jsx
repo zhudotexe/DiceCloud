@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Tabs, Tab } from 'material-ui/Tabs';
-import GetCharacter from '../../character_retriever.js'
-import Stats from './character/Stats.jsx'
+
+import Stats from './character/Stats.jsx';
 
 const Character = (props) => {
     const character = props.data;

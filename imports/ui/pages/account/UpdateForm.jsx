@@ -1,10 +1,12 @@
 import React from 'react';
+import { Meteor } from 'meteor/meteor';
 import Row from 'jsxstyle/Row';
 import Col from 'jsxstyle/Col';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
-import VerifiedIcon from './VerifiedIcon.jsx';
 import { deepPurple500 } from 'material-ui/styles/colors';
+
+import VerifiedIcon from './VerifiedIcon.jsx';
 
 export default class UpdateForm extends React.Component {
     constructor(props) {
@@ -30,7 +32,12 @@ export default class UpdateForm extends React.Component {
         Meteor.call('updateUser', {
             name: this.state.name,
             address: this.state.address,
-        }, (error, result) => {if (error) { console.warn(error)}});
+        }, (error, result) => {
+            if (error) {
+                console.error(error);
+            }
+            console.warn(result);
+        });
     }
     componentWillReceiveProps(nextProps) {
         const user = nextProps.user;
@@ -73,7 +80,7 @@ export default class UpdateForm extends React.Component {
             </Col>
         );
     }
-};
+}
 
 const styles = {
     roomForError: {

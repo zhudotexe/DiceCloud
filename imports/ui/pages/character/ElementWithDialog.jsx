@@ -4,6 +4,7 @@ import ArrowBack from 'material-ui/svg-icons/navigation/arrow-back.js';
 import IconButton from 'material-ui/IconButton';
 import Dialog from 'material-ui/Dialog';
 import Row from 'jsxstyle/Row';
+
 import { margin, px } from '../../../defines.js';
 
 export default class ElementWithDialog extends Component {
@@ -53,7 +54,7 @@ export default class ElementWithDialog extends Component {
             </div>
         );
     }
-};
+}
 const styles = {
     arrow: {
         marginRight: px(3 * margin),

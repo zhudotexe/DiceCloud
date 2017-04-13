@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
-import { px, margin, hrStyle } from '../../../defines.js';
+import React from 'react';
 import Row from 'jsxstyle/Row';
+
+import { px, margin, hrStyle } from '../../../defines.js';
 
 const CarryingAndJumping = (props) => (
     <div>

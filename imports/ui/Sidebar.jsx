@@ -1,4 +1,5 @@
 import React from 'react';
+import { Meteor } from 'meteor/meteor';
 import PropTypes from 'prop-types';
 import Paper from 'material-ui/Paper';
 import MenuItem from 'material-ui/MenuItem';

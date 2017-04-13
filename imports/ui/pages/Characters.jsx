@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
 import Row from 'jsxstyle/Row';
+
 import CharacterCard from '../CharacterCard.jsx';
-import { Card, CardHeader, CardText } from 'material-ui/Card';
 import { UserCharacters } from '../../character_retriever.js';
 
-// TODO: remove color imports once reading from data store
-import { pink500 } from 'material-ui/styles/colors.js';
 
 class Characters extends Component {
     constructor(props) {
-        super(props)
-        // TODO: read from data store via server based on user
+        super(props);
     }
     componentWillMount() {
         this.setState({'characters': UserCharacters(undefined)});

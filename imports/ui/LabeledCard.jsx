@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Card from 'material-ui/Card';
 import Row from 'jsxstyle/Row';
 import Col from 'jsxstyle/Col';
+
 import { px, margin, statCardHeight } from '../defines.js';
 
 const LabeledCard = (props) => (

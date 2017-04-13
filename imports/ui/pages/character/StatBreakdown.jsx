@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import InlineBlock from 'jsxstyle/InlineBlock';
 import Block from 'jsxstyle/Block';
+
 import { px, margin, operations } from '../../../defines.js';
 
 const Contribution = (props) => (

@@ -1,29 +1,22 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Col from 'jsxstyle/Col';
 import Block from 'jsxstyle/Block';
-import Dialog from 'material-ui/Dialog';
-import Card from 'material-ui/Card';
 import { grey100 } from 'material-ui/styles/colors.js';
-import ElementWithDialog from './ElementWithDialog.jsx';
-import { statCardHeight, hrStyle, displaySign, margin, px } from '../../../defines.js';
+
+import { statCardHeight, displaySign, px } from '../../../defines.js';
 import LabeledCard from '../../LabeledCard.jsx';
+import PrettyHR from '../../PrettyHR.jsx';
+
+import ElementWithDialog from './ElementWithDialog.jsx';
 import StatBreakdown from './StatBreakdown.jsx';
 
-const NiceHR = () => (
-    <Block component='hr'
-        width='100%'
-        borderColor={grey100}
-        borderStyle='solid'
-        marginBottom={px(3 * margin)}
-    />
-);
 const CardLabel = (props) => {
     const light = 'rgba(240, 240, 240, 0.8)';
     const normal = grey100;
     return (
         <Col alignItems='center'>
-            <Block color={grey100} fontSize='200%'>{props.stat}</Block>
-            <Block color={normal} fontSize='125%'>{props.display}</Block>
+            <Block color={normal} fontSize='200%'>{props.stat}</Block>
+            <Block color={light} fontSize='125%'>{props.display}</Block>
         </Col>
     );
 };
@@ -46,7 +39,7 @@ const StatCard = (props) => {
             <Block fontSize='300%'>
                 {statVal}
             </Block>
-            <NiceHR />
+            <PrettyHR />
             <StatBreakdown stats={props.stats} stat={props.stat} />
             {props.additionalContent || <div></div>}
         </Col>
